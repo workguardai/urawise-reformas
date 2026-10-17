@@ -24,6 +24,8 @@ A small Next.js 16 app: same design, copy and tracking as the app's `/reformas` 
 
 Never commit these; `.env*` is git-ignored.
 
+`DATABASE_URL` comes from Vercel's Neon integration (Storage → **neon-green-dog**, main branch, Production only), the same database the app uses. When the app moves to the EU database (**urawise-eu**), move this project too (disconnect neon-green-dog, connect urawise-eu), so leads keep landing where `/admin/leads` reads them.
+
 ## Local
 
 ```bash

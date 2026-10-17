@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { APP_URL, REFORMAS_PHOTOS, SITE_URL } from '@/lib/reformas'
 import { REFORMAS_SERVICES } from '@/lib/reformas-services'
 import { ContactButtons } from '@/app/contact-buttons'
-import { FreeQuoteBadge, GallerySection, QuoteSection, ReformasFooter, ReformasHeader, StepsSection } from '@/app/parts'
+import { AppSection, FreeQuoteBadge, GallerySection, QuoteSection, ReformasFooter, ReformasHeader, StepsSection } from '@/app/parts'
 
 // Home page of reformas.urawise.eu: the Barcelona renovation campaign (Google Ads). Spanish, public, and
 // separate from the platform's pages: no app navigation or sign-in. "Sobre Urawise" says openly that Urawise also makes the app.
@@ -45,6 +45,8 @@ export default function ReformasPage() {
       <p className="reformas-about">Además de hacer reformas, en Urawise desarrollamos una aplicación con la que propietarios y profesionales acuerdan la obra por escrito, siguen cada fase con fotos y aprueban los cambios antes de hacerlos. Si nos encargas tu reforma, puedes seguirla en la app; es opcional. <a className="text-link" href={APP_URL}>Conoce la app Urawise</a></p>
       <ContactButtons />
     </section>
+
+    <AppSection />
 
     <ReformasFooter />
   </main>

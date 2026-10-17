@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { findService, REFORMAS_SERVICES, servicePhotos } from '@/lib/reformas-services'
 import { SITE_URL } from '@/lib/reformas'
 import { ContactButtons } from '@/app/contact-buttons'
-import { FreeQuoteBadge, GallerySection, QuoteSection, ReformasFooter, ReformasHeader, StepsSection } from '@/app/parts'
+import { AppSection, FreeQuoteBadge, GallerySection, QuoteSection, ReformasFooter, ReformasHeader, StepsSection } from '@/app/parts'
 
 // One page per renovation service (e.g. /banos), in Spanish, for Google Ads sitelinks and search.
 
@@ -50,6 +50,8 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         <a className="reformas-service-link" href={`/${item.slug}`}><h3>{item.card.title}</h3><p>{item.card.body}</p><span className="reformas-more">Ver más →</span></a>
       </li>)}</ul>
     </section>
+
+    <AppSection />
 
     <ReformasFooter />
   </main>

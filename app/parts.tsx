@@ -1,6 +1,6 @@
 import { CookieSettingsLink } from '@/components/consent'
 import { REFORMAS_GALLERY_NOTE } from '@/lib/reformas'
-import { ContactLinks } from '@/app/contact-buttons'
+import { AppLink, ContactLinks } from '@/app/contact-buttons'
 import { LeadForm } from '@/app/lead-form'
 import type { WORK_TYPES } from '@/lib/leads'
 
@@ -44,6 +44,18 @@ export function GallerySection({ photos, title = 'Galería' }: { photos: { src: 
     <h2 id="galeria">{title}</h2>
     <div className="reformas-gallery">{photos.map(photo => <figure key={photo.src} className="reformas-photo"><img src={photo.src} alt={photo.alt} loading="lazy" /><figcaption>{photo.alt}</figcaption></figure>)}</div>
     <p className="reformas-gallery-note">{REFORMAS_GALLERY_NOTE}</p>
+  </section>
+}
+
+/** For visitors who already have a renovation company, and for renovation companies: the app keeps both sides on the same page. */
+export function AppSection() {
+  return <section className="reformas-section" aria-labelledby="app-urawise">
+    <h2 id="app-urawise">La app Urawise</h2>
+    <p className="reformas-about">¿Ya trabajas con una empresa de reformas, o tienes una? Con la app Urawise, propietario y empresa acuerdan la obra por escrito, siguen cada fase con fotos y aprueban los cambios antes de hacerlos.</p>
+    <ul className="reformas-services reformas-app">
+      <li><h3>Para propietarios</h3><p>Gratis, siempre. Invita a la empresa con la que ya trabajas y aprueba cada cambio antes de que afecte al precio.</p><AppLink audience="homeowners">Conoce la app para propietarios →</AppLink></li>
+      <li><h3>Para empresas de reformas</h3><p>Tu primer proyecto activo es gratis. Actualiza el avance desde el móvil y consigue por escrito la aprobación de los trabajos extra.</p><AppLink audience="contractors">Conoce la app para empresas →</AppLink></li>
+    </ul>
   </section>
 }
 

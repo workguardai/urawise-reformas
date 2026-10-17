@@ -124,3 +124,4 @@ footer.reformas-footer { display:block; padding:36px clamp(16px,5vw,64px); backg
   .consent-actions { width:100%; flex-wrap:nowrap; }
   .consent-actions .auth-submit { flex:1 1 0; padding:9px 10px; font-size:13px; line-height:1.2; }
 }
+.reformas-app { margin-top:24px !important; }

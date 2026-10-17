@@ -1,6 +1,6 @@
 'use client'
 
-import { REFORMAS_ADS_CONVERSIONS, REFORMAS_EMAIL, REFORMAS_EMAIL_SUBJECT, REFORMAS_WHATSAPP, REFORMAS_WHATSAPP_TEXT } from '@/lib/reformas'
+import { APP_URL, REFORMAS_ADS_CONVERSIONS, REFORMAS_EMAIL, REFORMAS_EMAIL_SUBJECT, REFORMAS_WHATSAPP, REFORMAS_WHATSAPP_TEXT } from '@/lib/reformas'
 
 type Gtag = (...args: unknown[]) => void
 
@@ -31,4 +31,10 @@ export function ContactLinks() {
     <li>WhatsApp: {whatsappHref ? <a href={whatsappHref} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp')}>+{REFORMAS_WHATSAPP}</a> : <span className="reformas-placeholder">[Pendiente: número de WhatsApp]</span>}</li>
     <li>Email: {emailHref ? <a href={emailHref} onClick={() => track('email')}>{REFORMAS_EMAIL}</a> : <span className="reformas-placeholder">[Pendiente: email de contacto]</span>}</li>
   </ul>
+}
+
+/** To the Urawise app's pitch for homeowners or contractors; the app records ?src=reformas as the signup source. */
+export function AppLink({ audience, children }: { audience: 'homeowners' | 'contractors'; children: React.ReactNode }) {
+  const onClick = () => (window as unknown as { gtag?: Gtag }).gtag?.('event', 'app_link', { audience, page: 'reformas' })
+  return <a className="reformas-more" href={`${APP_URL}/?src=reformas#${audience}`} onClick={onClick}>{children}</a>
 }
