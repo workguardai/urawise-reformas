@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:wght@600&display=swap');
+@import 'tailwindcss';
+
+/* Copied from the Urawise app stylesheet (app/globals.css): only the rules the renovation pages use, unchanged. */
+
+:root {
+  /* UraWise brand system: deep ink and lake blue, warm plaster canvas, with the sky-blue dot from the wordmark. */
+  --ink:#0f1f33; --ink-2:#3a4a5e; --muted:#66748a;
+  --canvas:#f6f3ee; --surface:#ffffff; --line:#e4ded3; --line-strong:#cfc7b8;
+  --brand:#1f5e8c; --brand-hover:#184b70; --brand-tint:#e6f0f7; --sky:#a8d8ea; --clay:#c8643b;
+  --success:#2e7d55; --success-tint:#e6f4ec; --warning:#a4640f; --warning-tint:#fbf1e1; --danger:#c23b3b; --alert:#e5484d;
+  --font-display:'Poppins', system-ui, sans-serif; --font-body:'Inter', system-ui, sans-serif; --font-wordmark:'Cormorant Garamond', serif;
+  --radius:14px; --radius-sm:10px; --shadow-card:0 1px 2px rgba(15,31,51,.04), 0 8px 24px rgba(15,31,51,.06);
+  /* Names used throughout the stylesheet, mapped onto the brand system. */
+  --white:var(--surface); --light-bg:var(--canvas); --blue-crystal:var(--brand); --blue-light:var(--brand-tint); --blue-deep:var(--ink);
+  --text-primary:var(--ink); --text-secondary:var(--ink-2); --text-muted:var(--muted); --border:var(--line); --shadow:rgba(15,31,51,.08);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--white); color:var(--text-primary); font-family:var(--font-body); }
+a { color:inherit; text-decoration:none; }
+button,input,textarea { font:inherit; } button { cursor:pointer; }
+.hero h1,h2 { font-family:var(--font-display); font-weight:500; letter-spacing:-.03em; }
+.wordmark { font-family:var(--font-display); font-size:27px; letter-spacing:.22em; font-weight:600; }.wordmark span { color:var(--blue-crystal); }
+.text-link { display:inline-flex; align-items:center; gap:10px; text-transform:uppercase; font-size:10px; letter-spacing:.14em; color:var(--text-secondary); }.text-link:hover { color:var(--blue-deep); }
+footer { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:38px 8vw; color:rgba(255,255,255,.7); background:var(--blue-deep); font-size:10px; text-transform:uppercase; letter-spacing:.1em; }
+.auth-submit { border:0; background:var(--blue-crystal); color:var(--white); padding:17px; text-transform:uppercase; letter-spacing:.13em; font-size:10px; }.auth-submit:disabled { opacity:.6; }.form-error { color:var(--danger); font-size:12px; line-height:1.5; }
+
+/* ============ Brand system: type, surfaces, controls ============ */
+body { background:var(--canvas); font-family:var(--font-body); color:var(--ink); -webkit-font-smoothing:antialiased; }
+h1,h2,h3 { font-family:var(--font-display); color:var(--ink); }
+/* The wordmark keeps its serif so the logo stays recognisable. */
+.wordmark,.auth-brand { font-family:var(--font-wordmark) !important; }
+.auth-brand span,.wordmark span { color:var(--sky); }
+
+/* Buttons: solid brand blue, sentence case, clear hit area. */
+.auth-submit,.button,.header-cta { font-family:var(--font-display); font-size:14px; font-weight:600; letter-spacing:0; text-transform:none; border-radius:var(--radius-sm); border:1px solid var(--brand); background:var(--brand); color:#fff; padding:13px 20px; box-shadow:none; transition:background .15s, transform .15s; }
+.auth-submit:hover,.button:hover,.header-cta:hover { background:var(--brand-hover); border-color:var(--brand-hover); transform:none; box-shadow:none; }
+.auth-submit:disabled { opacity:.5; }
+.auth-switch,.text-link { font-family:var(--font-display); font-weight:500; font-size:14px; letter-spacing:0; text-transform:none; color:var(--brand); }
+.auth-submit.secondary { background:transparent; color:var(--ink); border:1px solid var(--line-strong); }
+
+/* Cookie consent and legal pages */
+.consent-banner { position:fixed; left:16px; right:16px; bottom:16px; z-index:1500; max-width:760px; margin:0 auto; display:flex; gap:16px; align-items:center; flex-wrap:wrap; padding:16px 18px; border-radius:var(--radius); background:var(--surface); color:var(--ink); border:1px solid var(--line-strong); box-shadow:0 18px 50px rgba(15,31,51,.2); }
+.consent-banner p { margin:0; flex:1; min-width:240px; font-size:14px; line-height:1.55; color:var(--ink-2); }.consent-banner a { color:var(--brand); }
+.consent-actions { display:flex; gap:8px; flex-wrap:wrap; }.consent-actions .auth-submit { border-radius:999px; padding:11px 16px; }
+.cookie-settings-link { border:0; background:none; padding:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer; }
+.legal-body { max-width:760px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(22px,5vw,48px); line-height:1.7; }
+.legal-body h1 { font-family:var(--font-display); font-size:clamp(30px,5vw,44px); font-weight:600; margin:0 0 6px; }.legal-body h2 { font-family:var(--font-display); font-size:20px; font-weight:600; margin:30px 0 8px; scroll-margin-top:20px; }
+.legal-body ul { padding-left:20px; }.legal-body li { margin:6px 0; }.legal-updated { color:var(--muted); font-size:13px; }
+.legal-todo { background:#fff1b8; padding:0 4px; border-radius:4px; }
+
+/* /reformas — Barcelona renovation landing page (Google Ads) */
+.reformas-page { background:var(--surface); color:var(--ink); min-height:100vh; }
+.reformas-header { display:flex; align-items:center; padding:22px clamp(16px,5vw,64px); border-bottom:1px solid var(--line); color:var(--ink); }
+.reformas-hero { padding:clamp(56px,10vw,120px) clamp(16px,5vw,64px); background:var(--canvas); text-align:center; }
+.reformas-hero h1 { font-family:var(--font-display); font-weight:500; font-size:clamp(40px,8vw,76px); line-height:1.05; margin:0 0 18px; }
+.reformas-hero p { font-size:clamp(17px,2.4vw,21px); color:var(--ink-2); max-width:620px; margin:0 auto; }
+.reformas-actions { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:32px; }
+.reformas-button { display:inline-flex; align-items:center; justify-content:center; gap:6px; min-height:48px; padding:12px 22px; border-radius:999px; font-weight:700; font-size:16px; text-decoration:none; text-align:center; }
+.reformas-button.is-whatsapp { background:#1f8a4c; color:#fff; }
+.reformas-button.is-whatsapp:hover { background:#18703d; }
+.reformas-button.is-email { background:var(--surface); color:var(--brand); border:2px solid var(--brand); }
+.reformas-button.is-email:hover { background:var(--brand-tint); }
+.reformas-button.is-placeholder { opacity:.6; cursor:not-allowed; }
+.reformas-button small { font-weight:500; font-size:12px; }
+.reformas-section { padding:clamp(48px,8vw,96px) clamp(16px,5vw,64px); }
+.reformas-section.is-tinted { background:var(--canvas); }
+.reformas-section h2 { font-family:var(--font-display); font-weight:500; font-size:clamp(30px,5vw,44px); margin:0 0 28px; }
+.reformas-section h3 { font-size:18px; margin:0 0 6px; }
+.reformas-section p { color:var(--ink-2); line-height:1.6; margin:0; }
+.reformas-services { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:16px; }
+.reformas-services li { border:1px solid var(--line); border-radius:14px; padding:20px; background:var(--surface); }
+.reformas-steps { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:24px; }
+.reformas-step-number { display:inline-grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--brand); color:#fff; font-weight:700; margin-bottom:12px; }
+.reformas-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr)); gap:12px; }
+.reformas-gallery img,.reformas-photo-placeholder { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; }
+.reformas-photo-placeholder { display:grid; place-items:center; padding:12px; text-align:center; background:var(--canvas); border:2px dashed var(--line-strong); color:var(--muted); font-size:14px; }
+.reformas-about { max-width:720px; font-size:18px; }
+.reformas-section .reformas-actions { justify-content:flex-start; }
+footer.reformas-footer { display:block; padding:36px clamp(16px,5vw,64px); background:var(--ink); color:#fff; font-size:15px; text-transform:none; letter-spacing:normal; }
+.reformas-footer a { color:#fff; }
+.reformas-contact-list { list-style:none; padding:0; margin:0 0 16px; display:grid; gap:8px; }
+.reformas-placeholder { color:#f3c97a; }
+.reformas-legal { margin:0; font-size:13px; color:rgba(255,255,255,.75); }
+.reformas-legal .cookie-settings-link { color:inherit; }
+.reformas-legal-body { padding:clamp(32px,6vw,72px) clamp(16px,5vw,64px); max-width:760px; }
+.reformas-legal-body h2 { font-size:20px; margin:32px 0 10px; }
+.reformas-legal-body p,.reformas-legal-body li { line-height:1.65; color:var(--ink-2); }
+.reformas-header a.wordmark { color:inherit; text-decoration:none; }
+.reformas-photo { margin:0; }
+.reformas-photo figcaption { font-size:14px; color:var(--muted); margin-top:6px; }
+.reformas-gallery-note { margin-top:16px !important; font-size:14px; color:var(--muted) !important; }
+.reformas-about + .reformas-about { margin-top:14px; }
+.reformas-hero-form-link { margin-top:18px !important; font-size:15px !important; }
+.reformas-hero-form-link a { color:var(--brand); }
+.reformas-form { margin-top:24px; max-width:760px; display:grid; gap:16px; }
+.reformas-form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.reformas-form-grid .is-wide { grid-column:1 / -1; }
+.reformas-form label { display:grid; gap:6px; font-weight:600; font-size:15px; color:var(--ink); }
+.reformas-form label small { font-weight:400; color:var(--muted); }
+.reformas-form input,.reformas-form select,.reformas-form textarea { font:inherit; font-size:16px; padding:12px 14px; border:1px solid var(--line-strong); border-radius:10px; background:var(--surface); color:var(--ink); width:100%; box-sizing:border-box; }
+.reformas-form textarea { resize:vertical; }
+.reformas-hp { position:absolute !important; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.reformas-form-note { font-size:13px !important; }
+.reformas-button.is-submit { background:var(--brand); color:#fff; border:0; cursor:pointer; justify-self:start; font:inherit; font-weight:700; }
+.reformas-button.is-submit:disabled { opacity:.7; cursor:default; }
+.reformas-thanks-more { margin-top:24px !important; }
+@media (max-width:640px) { .reformas-form-grid { grid-template-columns:1fr; } .reformas-button.is-submit { justify-self:stretch; } }
+.reformas-service-link { display:block; height:100%; color:inherit; text-decoration:none; }
+.reformas-services li:has(.reformas-service-link):hover { border-color:var(--brand); }
+.reformas-more { display:inline-block; margin-top:10px; color:var(--brand); font-weight:600; font-size:15px; }
+.reformas-breadcrumb { font-size:14px !important; margin:0 auto 14px !important; }
+.reformas-breadcrumb a { color:var(--brand); }
+.reformas-includes { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:10px; }
+.reformas-includes li { padding:14px 16px 14px 44px; border:1px solid var(--line); border-radius:12px; position:relative; background:var(--surface); }
+.reformas-includes li::before { content:'✓'; position:absolute; left:16px; color:var(--brand); font-weight:700; }
+.reformas-includes-note { margin-top:18px !important; }
+.reformas-free { display:inline-block; margin:22px auto 0 !important; padding:8px 16px; border-radius:999px; background:#e6f4ec; color:#1d6b43 !important; font-weight:700; font-size:16px !important; }
+/* Phones: a compact cookie banner that doesn't hide the page; both choices stay equally easy. */
+@media (max-width:640px) {
+  .consent-banner { left:8px; right:8px; bottom:8px; gap:10px; padding:12px 14px; }
+  .consent-banner p { min-width:0; flex-basis:100%; font-size:12.5px; line-height:1.45; }
+  .consent-actions { width:100%; flex-wrap:nowrap; }
+  .consent-actions .auth-submit { flex:1 1 0; padding:9px 10px; font-size:13px; line-height:1.2; }
+}
