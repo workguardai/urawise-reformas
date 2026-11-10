@@ -41,7 +41,7 @@ export default function PrivacidadPage() {
       <ul>
         <li><strong>Responder a tu consulta, visitar la vivienda y preparar el presupuesto:</strong> aplicación de medidas precontractuales a petición tuya.</li>
         <li><strong>Realizar la obra y facturarla:</strong> ejecución del contrato y cumplimiento de obligaciones legales (fiscales y contables).</li>
-        <li><strong>Medir qué páginas y anuncios funcionan:</strong> tu consentimiento, que puedes retirar en cualquier momento. Con ese consentimiento, al enviar el formulario comunicamos a Google Ads la solicitud, con tu email o teléfono cifrados (en forma de «hash», no legibles), y más adelante si se concertó una visita o se contrató la obra, sin otros datos personales.</li>
+        <li><strong>Medir qué páginas y anuncios funcionan:</strong> tu consentimiento, que puedes retirar en cualquier momento. Con ese consentimiento, al enviar el formulario comunicamos a Google Ads la solicitud, con tu email o teléfono cifrados (en forma de «hash», no legibles), y más adelante si se concertó una visita o se contrató la obra, sin otros datos personales. También comunicamos a Meta, mediante Meta Pixel, las páginas que visitas, si envías el formulario y si pulsas el botón de WhatsApp, para medir y mejorar nuestros anuncios en Facebook e Instagram.</li>
       </ul>
       <p>No vendemos tus datos ni los usamos para enviarte publicidad sin tu permiso.</p>
 
@@ -51,6 +51,7 @@ export default function PrivacidadPage() {
         <li><strong>Vercel</strong>, que aloja esta web, y <strong>Neon</strong>, donde se guardan las solicitudes del formulario.</li>
         <li><strong>Resend</strong>, que nos envía por email cada solicitud del formulario.</li>
         <li><strong>Google</strong> (Google Analytics y Google Ads), solo si aceptas las cookies de analítica y publicidad.</li>
+        <li><strong>Meta Platforms Ireland</strong> (Meta Pixel), solo si aceptas las cookies de analítica y publicidad. Meta explica cómo trata los datos en su <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">política de privacidad</a>.</li>
         <li>Administraciones públicas, cuando la ley lo exija.</li>
       </ul>
       <p>Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo; en ese caso lo hacen con las garantías previstas en el RGPD, como las cláusulas contractuales tipo de la Comisión Europea.</p>
@@ -62,7 +63,7 @@ export default function PrivacidadPage() {
       <p>Puedes pedir el acceso, la rectificación, la supresión, la limitación u oposición al tratamiento y la portabilidad de tus datos escribiéndonos a {email}. Si consideras que no hemos tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>).</p>
 
       <h2 id="cookies">7. Cookies</h2>
-      <p>Usamos cookies necesarias para que la web funcione y para recordar tu elección sobre cookies. Solo si las aceptas, usamos también cookies de analítica y publicidad (Google Analytics y Google Ads) para saber qué páginas y anuncios funcionan. Puedes cambiar tu elección cuando quieras: <CookieSettingsLink label="Configuración de cookies" />.</p>
+      <p>Usamos cookies necesarias para que la web funcione y para recordar tu elección sobre cookies. Solo si las aceptas, usamos también cookies de analítica y publicidad (Google Analytics, Google Ads y Meta Pixel, que usa la cookie _fbp) para saber qué páginas y anuncios funcionan. Si eliges «Solo necesarias», ninguno de estos servicios se carga. Puedes cambiar tu elección cuando quieras: <CookieSettingsLink label="Configuración de cookies" />.</p>
     </article>
     <footer className="reformas-footer">
       <p className="reformas-legal"><a href="/">← Volver a Reformas en Barcelona</a></p>

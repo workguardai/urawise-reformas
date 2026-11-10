@@ -1,11 +1,13 @@
 'use client'
 
+import { trackMeta } from '@/components/consent'
 import { APP_URL, REFORMAS_ADS_CONVERSIONS, REFORMAS_EMAIL, REFORMAS_EMAIL_SUBJECT, REFORMAS_WHATSAPP, REFORMAS_WHATSAPP_TEXT } from '@/lib/reformas'
 
 type Gtag = (...args: unknown[]) => void
 
 /** Reports a contact click to GA4 (and Google Ads, once a conversion is set up). gtag only exists after cookie consent. */
 function track(method: 'whatsapp' | 'email') {
+  if (method === 'whatsapp') trackMeta('Contact')
   const gtag = (window as unknown as { gtag?: Gtag }).gtag
   if (!gtag) return
   gtag('event', 'generate_lead', { method, page: 'reformas' })

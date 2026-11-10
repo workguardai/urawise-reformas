@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useConsent } from '@/components/consent'
+import { trackMeta, useConsent } from '@/components/consent'
 import { submitLead, type LeadFormState } from '@/app/actions'
 import { WORK_TYPES } from '@/lib/leads'
 
@@ -36,7 +36,10 @@ export function LeadForm({ defaultWorkType = '' }: { defaultWorkType?: string })
     const result = await submitLead(prev, formData)
     if (result.leadId) {
       // Ignored (bot) submissions still see the thank-you page but are never counted as conversions.
-      if (!result.ignored) try { sessionStorage.setItem(LEAD_HANDOFF_KEY, JSON.stringify({ id: result.leadId, email: String(formData.get('email') ?? ''), phone: String(formData.get('phone') ?? '') })) } catch {}
+      if (!result.ignored) {
+        trackMeta('Lead')
+        try { sessionStorage.setItem(LEAD_HANDOFF_KEY, JSON.stringify({ id: result.leadId, email: String(formData.get('email') ?? ''), phone: String(formData.get('phone') ?? '') })) } catch {}
+      }
       router.push('/gracias')
     }
     return result

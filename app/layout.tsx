@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Analytics, ConsentBanner } from '@/components/consent'
+import { Analytics, ConsentBanner, MetaPixel } from '@/components/consent'
 import { SITE_URL } from '@/lib/reformas'
 import './globals.css'
 
@@ -17,7 +17,7 @@ export const viewport: Viewport = { themeColor: '#0a1628', colorScheme: 'light',
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-      <body>{children}<ConsentBanner /><Analytics /></body>
+      <body>{children}<ConsentBanner /><Analytics /><MetaPixel /></body>
     </html>
   )
 }
