@@ -40,7 +40,7 @@ export default function PrivacidadPage() {
       <ul>
         <li><strong>Responder a tu consulta, visitar la vivienda y preparar el presupuesto:</strong> aplicación de medidas precontractuales a petición tuya.</li>
         <li><strong>Realizar la obra y facturarla:</strong> ejecución del contrato y cumplimiento de obligaciones legales (fiscales y contables).</li>
-        <li><strong>Medir qué páginas y anuncios funcionan:</strong> tu consentimiento, que puedes retirar en cualquier momento. Con ese consentimiento, al enviar el formulario comunicamos a Google Ads la solicitud, con tu email o teléfono cifrados (en forma de «hash», no legibles), y más adelante si se concertó una visita o se contrató la obra, sin otros datos personales. También comunicamos a Meta, mediante Meta Pixel, las páginas que visitas, si envías el formulario y si pulsas el botón de WhatsApp, para medir y mejorar nuestros anuncios en Facebook e Instagram.</li>
+        <li><strong>Medir qué páginas y anuncios funcionan:</strong> tu consentimiento, que puedes retirar en cualquier momento. Con ese consentimiento, al enviar el formulario comunicamos a Google Ads la solicitud, con tu email o teléfono cifrados (en forma de «hash», no legibles), y más adelante si se concertó una visita o se contrató la obra, sin otros datos personales. También comunicamos a Meta, mediante Meta Pixel, las páginas que visitas, si envías el formulario y si pulsas un enlace de WhatsApp o de email, para medir y mejorar nuestros anuncios en Facebook e Instagram.</li>
       </ul>
       <p>No vendemos tus datos ni los usamos para enviarte publicidad sin tu permiso.</p>
 
