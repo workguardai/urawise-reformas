@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { CookieSettingsLink } from '@/components/consent'
 import { REFORMAS_COMPANY, REFORMAS_EMAIL, SITE_URL } from '@/lib/reformas'
+import { ReformasHeader } from '@/app/parts'
 
 // Privacy policy for the renovation business behind reformas.urawise.eu (Spanish, separate from the platform's policy).
 
@@ -17,9 +18,7 @@ const Fill = ({ value, missing }: { value: string; missing: string }) => value ?
 export default function PrivacidadPage() {
   const email = REFORMAS_EMAIL ? <a href={`mailto:${REFORMAS_EMAIL}`}>{REFORMAS_EMAIL}</a> : <Fill value="" missing="email de contacto" />
   return <main className="reformas-page" lang="es">
-    <header className="reformas-header">
-      <a className="wordmark" href="/">URAWISE<span>.</span></a>
-    </header>
+    <ReformasHeader formHref="/#presupuesto" />
     <article className="legal-body reformas-legal-body">
       <h1>Política de privacidad</h1>
       <p>Esta política explica cómo tratamos tus datos personales cuando nos contactas para pedir un presupuesto o nos encargas una reforma.</p>

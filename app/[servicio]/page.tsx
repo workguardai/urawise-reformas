@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { findService, REFORMAS_SERVICES, servicePhotos } from '@/lib/reformas-services'
 import { SITE_URL } from '@/lib/reformas'
 import { ContactButtons } from '@/app/contact-buttons'
-import { AppSection, FreeQuoteBadge, GallerySection, QuoteSection, ReformasFooter, ReformasHeader, StepsSection } from '@/app/parts'
+import { AppSection, Check, Eyebrow, FreeQuoteBadge, GallerySection, HeroMosaic, QuoteSection, ReformasFooter, ReformasHeader, ServiceTiles, StepsSection, TrustStrip } from '@/app/parts'
 
 // One page per renovation service (e.g. /banos), in Spanish, for Google Ads sitelinks and search.
 
@@ -25,19 +25,24 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
     <ReformasHeader />
 
     <section className="reformas-hero">
-      <p className="reformas-breadcrumb"><a href="/">Reformas en Barcelona</a> › {service.card.title}</p>
-      <h1>{service.h1}</h1>
-      <p>{service.intro}</p>
-      <FreeQuoteBadge />
-      <ContactButtons />
-      <p className="reformas-hero-form-link"><a href="#presupuesto">o pide tu presupuesto gratis con el formulario ↓</a></p>
+      <div className="reformas-hero-text">
+        <p className="reformas-breadcrumb"><a href="/">Reformas en Barcelona</a> › {service.card.title}</p>
+        <h1 className="is-service">{service.h1}</h1>
+        <p>{service.intro}</p>
+        <FreeQuoteBadge />
+        <ContactButtons />
+        <p className="reformas-hero-form-link"><a href="#presupuesto">o pide tu presupuesto gratis con el formulario ↓</a></p>
+      </div>
+      <HeroMosaic />
+      <TrustStrip />
     </section>
 
     <QuoteSection workType={service.workType} />
 
     <section className="reformas-section" aria-labelledby="incluye">
+      <Eyebrow>{service.card.title}</Eyebrow>
       <h2 id="incluye">{service.includesTitle}</h2>
-      <ul className="reformas-includes">{service.includes.map(item => <li key={item}>{item}</li>)}</ul>
+      <ul className="reformas-includes">{service.includes.map(item => <li key={item}><Check />{item}</li>)}</ul>
       <p className="reformas-about reformas-includes-note">Cada obra es distinta: en la visita vemos contigo qué necesitas y lo detallamos en el presupuesto.</p>
     </section>
 
@@ -45,10 +50,9 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
     <GallerySection photos={servicePhotos(service)} title="Trabajos anteriores" />
 
     <section className="reformas-section is-tinted" aria-labelledby="otros">
+      <Eyebrow>Qué más hacemos</Eyebrow>
       <h2 id="otros">Otros servicios</h2>
-      <ul className="reformas-services">{others.map(item => <li key={item.slug}>
-        <a className="reformas-service-link" href={`/${item.slug}`}><h3>{item.card.title}</h3><p>{item.card.body}</p><span className="reformas-more">Ver más →</span></a>
-      </li>)}</ul>
+      <ServiceTiles services={others} />
     </section>
 
     <AppSection />

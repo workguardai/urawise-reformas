@@ -17,13 +17,16 @@ function track(method: 'whatsapp' | 'email') {
 export const whatsappHref = REFORMAS_WHATSAPP ? `https://wa.me/${REFORMAS_WHATSAPP}?text=${encodeURIComponent(REFORMAS_WHATSAPP_TEXT)}` : null
 export const emailHref = REFORMAS_EMAIL ? `mailto:${REFORMAS_EMAIL}?subject=${encodeURIComponent(REFORMAS_EMAIL_SUBJECT)}` : null
 
+const WhatsAppIcon = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1c0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3Z" /></svg>
+const MailIcon = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" d="M3.5 6.5h17v11h-17zM3.8 7l8.2 6.2L20.2 7" /></svg>
+
 export function ContactButtons() {
   return <div className="reformas-actions">
     {whatsappHref
-      ? <a className="reformas-button is-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp')}>Escríbenos por WhatsApp</a>
+      ? <a className="reformas-button is-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp')}><WhatsAppIcon />Escríbenos por WhatsApp</a>
       : <span className="reformas-button is-whatsapp is-placeholder" aria-disabled="true">Escríbenos por WhatsApp <small>[falta el número]</small></span>}
     {emailHref
-      ? <a className="reformas-button is-email" href={emailHref} onClick={() => track('email')}>Pide presupuesto por email</a>
+      ? <a className="reformas-button is-email" href={emailHref} onClick={() => track('email')}><MailIcon />Pide presupuesto por email</a>
       : <span className="reformas-button is-email is-placeholder" aria-disabled="true">Pide presupuesto por email <small>[falta el email]</small></span>}
   </div>
 }

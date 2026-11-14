@@ -6,14 +6,21 @@ export const REFORMAS_WHATSAPP = '351924673825'
 /** Address for quote requests by email. */
 export const REFORMAS_EMAIL = 'besasonos@gmail.com'
 
-/** Project photos: put the files in /public/reformas/ and list them here, e.g. { src: '/reformas/bano-gracia.jpg', alt: 'Baño reformado en Gràcia' }. */
+/** Project photos, resized for the web, in /public/obras/ (originals: 3024×4032 phone photos). */
 export const REFORMAS_PHOTOS: { src: string; alt: string }[] = [
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_8199-A0M3ahZq2OgovMJF5AN1vnGnNZnI6K.jpg', alt: 'Cocina en fase de acabados' },
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_8407-jAfsWMIrHa6Vr27Bodnjj48pnByJlh.jpg', alt: 'Porche y escalón alicatados con mosaico' },
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7371-84mZ9ZdSgtIShDYVEP74pXqzTP2pxE.jpg', alt: 'Camino de piedra natural en un jardín' },
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_8018-35lV4IHEFUnKD8RpuOkz6J3nHIZQue.jpg', alt: 'Escalones de entrada con adoquines' },
-  { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_8269-bz35AhBzG10E6r9INAFUoVj49qolPQ.jpg', alt: 'Habitación preparada para pintar' },
+  { src: '/obras/cocina-acabados.jpg', alt: 'Cocina en fase de acabados' },
+  { src: '/obras/porche-mosaico.jpg', alt: 'Porche y escalón alicatados con mosaico' },
+  { src: '/obras/camino-piedra.jpg', alt: 'Camino de piedra natural en un jardín' },
+  { src: '/obras/escalones-adoquin.jpg', alt: 'Escalones de entrada con adoquines' },
+  { src: '/obras/habitacion-pintura.jpg', alt: 'Habitación preparada para pintar' },
 ]
+/** Close-ups of materials from the same projects, used as tiles in the hero mosaic (decorative). */
+export const REFORMAS_DETAILS = {
+  greenTile: '/obras/detalle-azulejo-verde.jpg',
+  mosaic: '/obras/detalle-mosaico.jpg',
+  stone: '/obras/detalle-piedra.jpg',
+  pavers: '/obras/detalle-adoquin.jpg',
+}
 /** Shown under the gallery, so visitors know where the photos come from. */
 export const REFORMAS_GALLERY_NOTE = 'Trabajos anteriores, realizados fuera de Barcelona. Pronto añadiremos proyectos en Barcelona.'
 
