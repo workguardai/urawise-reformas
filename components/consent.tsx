@@ -3,11 +3,10 @@
 import Script from 'next/script'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { CONSENT_COOKIE, META_PIXEL_ID } from '@/lib/reformas'
 
 // Cookie consent, the Google tag and the Meta Pixel (Spanish only here).
 
-/** "_v2" since Meta was added: an earlier "Accept" only covered Google, so those visitors are asked again. */
-export const CONSENT_COOKIE = 'urawise_consent_v2'
 export const CONSENT_EVENT = 'urawise:consent'
 const OPEN_EVENT = 'urawise:consent-open'
 type Choice = 'all' | 'necessary' | null
@@ -30,13 +29,17 @@ const readChoice = (): Choice => {
   const value = document.cookie.split('; ').find(item => item.startsWith(`${CONSENT_COOKIE}=`))?.split('=')[1]
   return value === 'all' || value === 'necessary' ? value : null
 }
-const META_PIXEL_ID = '1561501742641489'
 type Fbq = (...args: unknown[]) => void
 const fbq = () => (window as unknown as { fbq?: Fbq }).fbq
 
-/** Reports an event to Meta. fbq only exists after "Accept", and stays on the page if consent is withdrawn later, so the choice is checked too. */
-export function trackMeta(event: 'PageView' | 'Lead' | 'Contact') {
-  if (readChoice() === 'all') fbq()?.('track', event)
+/**
+ * Reports an event to Meta. fbq only exists after "Accept", and stays on the page if consent is withdrawn later, so the
+ * choice is checked too. eventId: the same ID as the server's Conversions API event, so Meta counts the two as one.
+ */
+export function trackMeta(event: 'PageView' | 'Lead' | 'Contact', eventId?: string) {
+  if (readChoice() !== 'all') return
+  if (eventId) fbq()?.('track', event, {}, { eventID: eventId })
+  else fbq()?.('track', event)
 }
 
 const subscribe = (callback: () => void) => { window.addEventListener(CONSENT_EVENT, callback); return () => window.removeEventListener(CONSENT_EVENT, callback) }

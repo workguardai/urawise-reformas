@@ -55,3 +55,8 @@ export const REFORMAS_COMPANY = {
 export const SITE_URL = 'https://reformas.urawise.eu'
 /** The Urawise app (the main site), linked from "Sobre Urawise". */
 export const APP_URL = 'https://www.urawise.eu'
+
+/** Meta Pixel, also used by the Conversions API for the form's Lead. */
+export const META_PIXEL_ID = '1561501742641489'
+/** The visitor's cookie choice ("all" or "necessary"). "_v2" since Meta was added: an earlier "Accept" only covered Google. */
+export const CONSENT_COOKIE = 'urawise_consent_v2'

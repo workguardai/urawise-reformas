@@ -11,7 +11,7 @@ A small Next.js 16 app: same design, copy and tracking as the app's `/reformas` 
 | Privacy | `/reformas/privacidad` | `/privacidad` |
 
 - **Quote form**: a server action (`app/actions.ts`) that writes to the app's Neon table `renovation_leads` (so `/admin/leads` and the offline-conversion uploads keep working) and emails each request through Resend.
-- **Tracking**: cookie banner, then GA4 `G-0S36L0HQ2Z` + Google Ads `AW-18368007697`. Conversion labels are in `lib/reformas.ts`.
+- **Tracking**: cookie banner, then GA4 `G-0S36L0HQ2Z` + Google Ads `AW-18368007697` + Meta Pixel `1561501742641489` (PageView, Contact, Lead). The form's Lead also goes to Meta's Conversions API from the server (`lib/meta-capi.ts`), with the same event ID so Meta counts it once; only with consent. Conversion labels are in `lib/reformas.ts`.
 - **SEO**: canonical + Open Graph on `https://reformas.urawise.eu`, `/sitemap.xml`, `/robots.txt`, `lang="es"`.
 
 ## Environment variables (Vercel → Settings → Environment Variables)
@@ -20,6 +20,8 @@ A small Next.js 16 app: same design, copy and tracking as the app's `/reformas` 
 |---|---|
 | `DATABASE_URL` | the same **production** database URL the Urawise app uses in Vercel |
 | `RESEND_API_KEY` | the same Resend key as the app |
+| `META_CAPI_ACCESS_TOKEN` | Meta Conversions API token: Events Manager → pixel `1561501742641489` → Settings → Conversions API → Generate access token |
+| `META_CAPI_TEST_EVENT_CODE` | optional, only while testing (Events Manager → Test Events); remove afterwards |
 | `EMAIL_FROM`, `EMAIL_REPLY_TO` | optional; default to `UraWise <notifications@urawise.eu>` / `ek@workguardai.com` |
 
 Never commit these; `.env*` is git-ignored.

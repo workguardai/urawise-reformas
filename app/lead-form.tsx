@@ -9,15 +9,16 @@ import { WORK_TYPES } from '@/lib/leads'
 /** Handed from the form to the thank-you page (same tab only), which reports the conversion once and then forgets it. */
 export const LEAD_HANDOFF_KEY = 'reformas-lead'
 const CLICK_KEY = 'reformas-click'
-type Click = { gclid: string; gbraid: string; wbraid: string; source: string }
+type Click = { gclid: string; gbraid: string; wbraid: string; fbclid: string; source: string }
 
-/** Google's click IDs from the ad visit, kept for this tab while the visitor looks around. */
+/** Google's and Meta's click IDs from the ad visit, kept for this tab while the visitor looks around. */
 function readClick(): Click {
   const params = new URLSearchParams(window.location.search)
   let stored: Partial<Click> = {}
   try { stored = JSON.parse(sessionStorage.getItem(CLICK_KEY) ?? '{}') } catch {}
   const click = {
     gclid: params.get('gclid') ?? stored.gclid ?? '', gbraid: params.get('gbraid') ?? stored.gbraid ?? '', wbraid: params.get('wbraid') ?? stored.wbraid ?? '',
+    fbclid: params.get('fbclid') ?? stored.fbclid ?? '',
     source: params.get('src') ?? params.get('utm_source') ?? stored.source ?? '',
   }
   try { sessionStorage.setItem(CLICK_KEY, JSON.stringify(click)) } catch {}
@@ -31,13 +32,13 @@ export function LeadForm({ defaultWorkType = '' }: { defaultWorkType?: string })
   const [state, action, pending] = useActionState(async (prev: LeadFormState, formData: FormData) => {
     // Ad click IDs are only kept with the visitor's consent to advertising cookies.
     const click = readClick()
-    for (const key of ['gclid', 'gbraid', 'wbraid'] as const) formData.set(key, consent === 'all' ? click[key] : '')
+    for (const key of ['gclid', 'gbraid', 'wbraid', 'fbclid'] as const) formData.set(key, consent === 'all' ? click[key] : '')
     formData.set('source', click.source)
     const result = await submitLead(prev, formData)
     if (result.leadId) {
       // Ignored (bot) submissions still see the thank-you page but are never counted as conversions.
       if (!result.ignored) {
-        trackMeta('Lead')
+        trackMeta('Lead', result.leadId)
         try { sessionStorage.setItem(LEAD_HANDOFF_KEY, JSON.stringify({ id: result.leadId, email: String(formData.get('email') ?? ''), phone: String(formData.get('phone') ?? '') })) } catch {}
       }
       router.push('/gracias')
